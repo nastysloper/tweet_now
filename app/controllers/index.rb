@@ -3,13 +3,21 @@ get '/' do
   erb :index
 end
 
-get '/:username' do
+post '/user/new' do
     
-  @user = TwitterUser.find_or_create_by_username(params[:username])
-    
-  @user.fetch_tweets!
+  @person = TwitterUser.find_or_create_by_username(params[:username])
   
-  @tweets = @user.tweets.limit(10)
+  @person.fetch_tweets!
+  @tweets = @person.tweets.limit(10)
   
+  erb :list
+end
+
+
+post '/tweet/new' do
+  @person = TwitterUser.find_or_create_by_username(params[:username])
+  Twitter.update(params[:new_tweet])
+  @person.fetch_tweets!
+  @tweets = @person.tweets.limit(10)
   erb :list
 end

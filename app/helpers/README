@@ -7,3 +7,17 @@ helpers do
     "<em>#{text}</em>"
   end
 end
+
+0. Keys are in config, environment
+0.1 Twitter gem is in spec, gemfile 
+0.2 require 'twitter' in config, environment
+1. Breaking in model, @user or username is nil. Looked like I wasn't passing
+an instance variable to the view.
+2. Don't forget to add (and then remove!) your keys at the beginning
+and ending of the day.
+3. What's information does Twitter give you?
+4. Twitter.user("Richard_Vogt") gives you information about a user, their user_id, their name, username, and some other stuff.
+5. Working on tweet now.
+user_timeline will pull old tweets.
+update creates a new one.
+6. 
