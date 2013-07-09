@@ -17,7 +17,9 @@ end
 post '/tweet/new' do
   @person = TwitterUser.find_or_create_by_username(params[:username])
   Twitter.update(params[:new_tweet])
-  @person.fetch_tweets!
-  @tweets = @person.tweets.limit(10)
-  erb :list
+  @tweet = Tweet.create(text: params[:new_tweet])
+  
+  erb :latest_tweet
 end
+
+
